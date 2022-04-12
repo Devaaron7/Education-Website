@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+
+  <p></p>
+
+  <center>
+
+    
+  <div class="center">
+
+    <h1>Register</h1>
+
+    <p>Create User Name</p>
+    <input type="text" id="user"/>
+
+    <p>Create Password</p>
+    <input type="password" id="password"/>
+
+    <p style="color: black;" id="confirm_text">Confirm Password</p>
+    
+    <input type="password" id="password_check" oninput="checkifpasssame()"/> <br/> <br/>
+
+    <input type="button" id = "save" value="save" onclick="saveStaticDataToFile()">
+
+  </center>
+
+  </div>
+  
+  
+</body>
+
+<script>
+
+
+  function saveStaticDataToFile() {
+
+    if (document.getElementById("confirm_text").value == "Ok!"){
+
+      var username = document.getElementById("user").value;
+      var password = document.getElementById("password").value;
+      var stdin = username + "\n" + password;
+      var text_file = new Blob([stdin], {type:"txt"});
+      var anchor = document.createElement("a");
+      anchor.href = URL.createObjectURL(text_file);
+      anchor.download = "info.txt";
+      anchor.click();
+    }else{
+      document.getElementById("save").innerHTML = "Check Password Match"
+    }
+
+    }
+
+
+  function checkifpasssame() {
+
+    var password = document.getElementById("password").value;
+    var current = document.getElementById("password_check").value;
+
+    if (current == password){
+      document.getElementById("confirm_text").innerHTML = "Ok!";
+      document.getElementById("confirm_text").style.color = 'green';
+    }else{
+      document.getElementById("confirm_text").innerHTML = "Password doesn't match";
+      document.getElementById("confirm_text").style.color = 'red';
+    }
+  }
+
+
+
+
+  </script> 
+
+</html>
