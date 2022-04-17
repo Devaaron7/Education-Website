@@ -19,20 +19,38 @@ def main():
     #connection = psycopg2.connect(os.environ['DATABASE_URL'])
     connection = psycopg2.connect(host="free-tier11.gcp-us-east1.cockroachlabs.cloud", port=26257, dbname="terra-hamster-556.defaultdb", user="dev_link", password="7sHSHqWHzdQJUrFrFclaSg")
 
-    statements = [
-        # CREATE the messages table
-        "CREATE TABLE messages (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), message STRING)",
-        # INSERT a row into the messages table
-        "INSERT INTO messages (message) VALUES ('Hello world!')",
-        # SELECT a row from the messages table
-        "SELECT message FROM messages"
-    ]
+    cursor = connection.cursor()
+    
+    #cursor.execute("DROP TABLE IF EXISTS EMPLOYEE")
 
-    for statement in statements:
-        exec_statement(connection, statement)
+    #statements = '''CREATE TABLE EMPLOYEE(
+    #FIRST_NAME CHAR(20) NOT NULL,
+    #LAST_NAME CHAR(20),
+    #AGE INT,
+    #SEX CHAR(1),
+    #INCOME FLOAT
+    #)'''
 
-    # Close communication with the database
-    connection.close()
+    #cursor.execute(statements)
+
+    #print("Table created successfully........")
+    #connection.commit()
+
+    #cursor.execute('''INSERT INTO EMPLOYEE(FIRST_NAME, LAST_NAME, AGE, SEX,
+    #INCOME) VALUES ('John', 'Smith', 32, 'M', 30000)''')
+    
+    cursor.execute('''SELECT * from EMPLOYEE''')
+
+    result = cursor.fetchall()
+
+    for data in result:
+        print(data)
+
+    #Commit your changes in the database
+    #connection.commit()
+    
+    #Closing the connection
+    #connection.close()
 
 
 if __name__ == "__main__":
