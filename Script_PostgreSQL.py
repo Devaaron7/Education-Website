@@ -43,33 +43,37 @@ def main():
 
     def delete_table(name):
         cursor.execute("DROP TABLE IF EXISTS USERS")
-        print("Table {} Delete".format(name))
+        print("Table {} Deleted".format(name))
         connection.commit()
 
 
+    def list_tables():
+        total = '''SHOW TABLES'''
+        print(total)
+        connection.commit()
 
-    #create_table("Test1", "nancy", "flowers" )
+
+    list_
+
+
+
+    #create_table("Test1", "nancy@gmail.com", "flowers" )
 
     
-    
-
-    #statements = '''CREATE TABLE USERS(
-    #EMAIL VARCHAR(20) NOT NULL,
-    #PASSWORD VARCHAR(20))'''
 
 
-    #statements = '''CREATE TABLE USERS(
-    #FIRST_NAME CHAR(20) NOT NULL,
-    #LAST_NAME CHAR(20),
-    #AGE INT,
-    #SEX CHAR(1),
-    #INCOME FLOAT
-    #)'''
 
-    #cursor.execute(statements)
 
-    #print("Table created successfully........")
-    #connection.commit()
+    #delete_table("USERS")
+
+
+
+
+
+
+
+
+
 
     #cursor.execute('''INSERT INTO USERS("john@gmail.com", "button")''')
 
