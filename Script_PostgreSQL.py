@@ -1,7 +1,6 @@
 import os
 import psycopg2
 
-
 def exec_statement(conn, stmt):
     try:
         with conn.cursor() as cur:
@@ -13,8 +12,16 @@ def exec_statement(conn, stmt):
         return
 
 
-def main():
 
+
+
+
+
+
+
+
+
+def main():
     # Connect to CockroachDB
     #connection = psycopg2.connect(os.environ['DATABASE_URL'])
     connection = psycopg2.connect(
@@ -24,13 +31,25 @@ def main():
     user="dev_link", 
     password="7sHSHqWHzdQJUrFrFclaSg")
 
-    cursor = connection.cursor()
-    
-    #cursor.execute("DROP TABLE IF EXISTS EMPLOYEE")
 
-    statements = '''CREATE TABLE USERS(
-    EMAIL VARCHAR(20) NOT NULL,
-    PASSWORD VARCHAR(20))'''
+    cursor = connection.cursor()
+
+    def create_table(name, email, password):
+        table = '''CREATE TABLE {}({} VARCHAR(20) NOT NULL,{} VARCHAR(20))'''.format(name, email, password)
+        cursor.execute(table)
+        print("Table {} Created".format(name))
+        connection.commit()
+
+
+    create_table("Test1", "nancy@gmail.com", )
+
+    
+    
+    #cursor.execute("DROP TABLE IF EXISTS USERS")
+
+    #statements = '''CREATE TABLE USERS(
+    #EMAIL VARCHAR(20) NOT NULL,
+    #PASSWORD VARCHAR(20))'''
 
 
     #statements = '''CREATE TABLE USERS(
@@ -41,15 +60,16 @@ def main():
     #INCOME FLOAT
     #)'''
 
-    cursor.execute(statements)
+    #cursor.execute(statements)
 
     #print("Table created successfully........")
     #connection.commit()
 
-    #cursor.execute('''INSERT INTO EMPLOYEE(FIRST_NAME, LAST_NAME, AGE, SEX,
-    #INCOME) VALUES ('John', 'Smith', 32, 'M', 30000)''')
+    #cursor.execute('''INSERT INTO USERS("john@gmail.com", "button")''')
+
+    #cursor.execute('''INSERT INTO USERS(EMAIL, PASSWORD) VALUES ("john@gmail.com", "button")''')
     
-    #cursor.execute('''SELECT * from EMPLOYEE''')
+    #cursor.execute('''SELECT * from USERS''')
 
     #result = cursor.fetchall()
 
@@ -57,10 +77,12 @@ def main():
     #    print(data)
 
     #Commit your changes in the database
-    connection.commit()
+    #connection.commit()
     
     #Closing the connection
     connection.close()
+
+    #print("Action Complete")
 
 
 if __name__ == "__main__":
