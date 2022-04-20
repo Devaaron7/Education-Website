@@ -35,17 +35,23 @@ def main():
     cursor = connection.cursor()
 
     def create_table(name, email, password):
-        table = '''CREATE TABLE {}({} VARCHAR(20) NOT NULL,{} VARCHAR(20))'''.format(name, email, password)
+        table = '''CREATE TABLE {}({} VARCHAR(MAX),{} VARCHAR(MAX))'''.format(name, email, password)
         cursor.execute(table)
         print("Table {} Created".format(name))
         connection.commit()
 
 
-    create_table("Test1", "nancy@gmail.com", )
+    def delete_table(name):
+        cursor.execute("DROP TABLE IF EXISTS USERS")
+        print("Table {} Delete".format(name))
+        connection.commit()
+
+
+
+    #create_table("Test1", "nancy", "flowers" )
 
     
     
-    #cursor.execute("DROP TABLE IF EXISTS USERS")
 
     #statements = '''CREATE TABLE USERS(
     #EMAIL VARCHAR(20) NOT NULL,
