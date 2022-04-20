@@ -17,13 +17,23 @@ def main():
 
     # Connect to CockroachDB
     #connection = psycopg2.connect(os.environ['DATABASE_URL'])
-    connection = psycopg2.connect(host="free-tier11.gcp-us-east1.cockroachlabs.cloud", port=26257, dbname="terra-hamster-556.defaultdb", user="dev_link", password="7sHSHqWHzdQJUrFrFclaSg")
+    connection = psycopg2.connect(
+    host="free-tier11.gcp-us-east1.cockroachlabs.cloud",
+    port=26257, 
+    dbname="terra-hamster-556.defaultdb",
+    user="dev_link", 
+    password="7sHSHqWHzdQJUrFrFclaSg")
 
     cursor = connection.cursor()
     
     #cursor.execute("DROP TABLE IF EXISTS EMPLOYEE")
 
-    #statements = '''CREATE TABLE EMPLOYEE(
+    statements = '''CREATE TABLE USERS(
+    EMAIL VARCHAR(20) NOT NULL,
+    PASSWORD VARCHAR(20))'''
+
+
+    #statements = '''CREATE TABLE USERS(
     #FIRST_NAME CHAR(20) NOT NULL,
     #LAST_NAME CHAR(20),
     #AGE INT,
@@ -31,7 +41,7 @@ def main():
     #INCOME FLOAT
     #)'''
 
-    #cursor.execute(statements)
+    cursor.execute(statements)
 
     #print("Table created successfully........")
     #connection.commit()
@@ -39,18 +49,18 @@ def main():
     #cursor.execute('''INSERT INTO EMPLOYEE(FIRST_NAME, LAST_NAME, AGE, SEX,
     #INCOME) VALUES ('John', 'Smith', 32, 'M', 30000)''')
     
-    cursor.execute('''SELECT * from EMPLOYEE''')
+    #cursor.execute('''SELECT * from EMPLOYEE''')
 
-    result = cursor.fetchall()
+    #result = cursor.fetchall()
 
-    for data in result:
-        print(data)
+    #for data in result:
+    #    print(data)
 
     #Commit your changes in the database
-    #connection.commit()
+    connection.commit()
     
     #Closing the connection
-    #connection.close()
+    connection.close()
 
 
 if __name__ == "__main__":
