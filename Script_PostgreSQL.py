@@ -13,14 +13,6 @@ def exec_statement(conn, stmt):
 
 
 
-
-
-
-
-
-
-
-
 def main():
     # Connect to CockroachDB
     #connection = psycopg2.connect(os.environ['DATABASE_URL'])
@@ -55,35 +47,43 @@ def main():
         #connection.commit()
 
     def list_columns(table):
-        cursor.execute('''SELECT * FROM {}'''.format(table))
+        cursor.execute('''SELECT NAME FROM {}'''.format(table))
         columns = cursor.fetchall()
         print(columns)
 
+    
+    #def insert_into_table(table_name, email, password):
+    #    action = '''INSERT INTO {table}(email, password) VALUES ({e}, {p})'''.format(table = table_name, e = email, p = password)
+    #    cursor.execute(action)
+    #    connection.commit()
+    #    print("Data inserted successfully: {e} / {p}".format(e = email, p = password))
+    
 
-    def insert_into_table(table_name, email, password):
-        action = '''INSERT INTO {table}(email, password) VALUES ({e}, {p})'''.format(table = table_name, e = email, p = password)
+    def insert_into_table(table_name, value):
+        action = '''INSERT INTO {table}(NAME) VALUES ({v})'''.format(table = table_name, v = value)
         cursor.execute(action)
         connection.commit()
-        print("Data inserted successfully: {e} / {p}".format(e = email, p = password))
+        print("Data inserted successfully: {v}".format(v = value))
 
 
 
-    #list_tables()
+    list_tables()
 
-    #insert_into_table("users", "john", "123")
+    insert_into_table("company", "Aaron")
 
     #create_table("users", "email", "password" )
 
-    list_columns("users")
+    list_columns("company")
 
-    
-
-    
     #delete_table("users")
 
     #list_tables()
 
     
+
+    
+
+    #connection.commit()
 
 
 
