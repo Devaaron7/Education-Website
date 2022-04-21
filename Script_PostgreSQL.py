@@ -35,16 +35,17 @@ def main():
     cursor = connection.cursor()
 
     def create_table(table_name, column_1, column_2):
-        table = '''CREATE TABLE {}({} VARCHAR(64),{} VARCHAR(64))'''.format(table_name, column_1, column_2)
+        table = '''CREATE TABLE {table}({c1} varchar(255) NOT NULL,{c2} varchar(255) NOT NULL)'''.format(table = table_name, c1 = column_1, c2 = column_2)
         cursor.execute(table)
-        print("Table {} Created".format(table_name))
         connection.commit()
+        print("Table {table} Created".format(table = table_name))
 
 
     def delete_table(name):
         cursor.execute("DROP TABLE IF EXISTS {}".format(name))
-        print("Table {} Deleted".format(name))
         connection.commit()
+        print("Table {} Deleted".format(name))
+        
 
 
     def list_tables():
@@ -53,23 +54,36 @@ def main():
         print(total)
         #connection.commit()
 
+    def list_columns(table):
+        cursor.execute('''SELECT * FROM {}'''.format(table))
+        columns = cursor.fetchall()
+        print(columns)
+
 
     def insert_into_table(table_name, email, password):
-        action = '''INSERT INTO {}(EMAIL, PASSWORD) VALUES ({}, {})'''.format(table_name, email, password)
+        action = '''INSERT INTO {table}(email, password) VALUES ({e}, {p})'''.format(table = table_name, e = email, p = password)
         cursor.execute(action)
-        print("Data inserted successfully: {} / {}".format(email, password))
         connection.commit()
+        print("Data inserted successfully: {e} / {p}".format(e = email, p = password))
 
 
 
     #list_tables()
 
-    #create_table("USERS", "email", "password" )
+    #insert_into_table("users", "john", "123")
+
+    #create_table("users", "email", "password" )
+
+    list_columns("users")
 
     
-    #delete_table("USERS")
 
-    insert_into_table("USERS", 'john@gmail.com', 'aligator13')
+    
+    #delete_table("users")
+
+    #list_tables()
+
+    
 
 
 
