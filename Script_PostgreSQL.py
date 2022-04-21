@@ -34,37 +34,42 @@ def main():
 
     cursor = connection.cursor()
 
-    def create_table(name, email, password):
-        table = '''CREATE TABLE {}({} VARCHAR(MAX),{} VARCHAR(MAX))'''.format(name, email, password)
+    def create_table(table_name, column_1, column_2):
+        table = '''CREATE TABLE {}({} VARCHAR(64),{} VARCHAR(64))'''.format(table_name, column_1, column_2)
         cursor.execute(table)
-        print("Table {} Created".format(name))
+        print("Table {} Created".format(table_name))
         connection.commit()
 
 
     def delete_table(name):
-        cursor.execute("DROP TABLE IF EXISTS USERS")
+        cursor.execute("DROP TABLE IF EXISTS {}".format(name))
         print("Table {} Deleted".format(name))
         connection.commit()
 
 
     def list_tables():
-        total = '''SHOW TABLES'''
+        cursor.execute('''SHOW TABLES''')
+        total = cursor.fetchall()
         print(total)
+        #connection.commit()
+
+
+    def insert_into_table(table_name, email, password):
+        action = '''INSERT INTO {}(EMAIL, PASSWORD) VALUES ({}, {})'''.format(table_name, email, password)
+        cursor.execute(action)
+        print("Data inserted successfully: {} / {}".format(email, password))
         connection.commit()
 
 
-    list_
 
+    #list_tables()
 
-
-    #create_table("Test1", "nancy@gmail.com", "flowers" )
+    #create_table("USERS", "email", "password" )
 
     
-
-
-
-
     #delete_table("USERS")
+
+    insert_into_table("USERS", 'john@gmail.com', 'aligator13')
 
 
 
