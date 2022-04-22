@@ -14,8 +14,7 @@ def exec_statement(conn, stmt):
 
 
 def main():
-    # Connect to CockroachDB
-    #connection = psycopg2.connect(os.environ['DATABASE_URL'])
+    
     connection = psycopg2.connect(
     host="free-tier11.gcp-us-east1.cockroachlabs.cloud",
     port=26257, 
@@ -23,11 +22,13 @@ def main():
     user="dev_link", 
     password="7sHSHqWHzdQJUrFrFclaSg")
 
-
     cursor = connection.cursor()
 
     def create_table(table_name, primary_id, column_1, column_2):
-        table = '''CREATE TABLE {table}({p} int PRIMARY KEY, {c1} varchar(255) NOT NULL,{c2} varchar(255) NOT NULL)'''.format(table = table_name, p = primary_id, c1 = column_1, c2 = column_2)
+        table = '''CREATE TABLE IF NOT EXISTS {table}(
+        {p} int PRIMARY KEY, 
+        {c1} varchar(255) NOT NULL,
+        {c2} varchar(255))'''.format(table = table_name, p = primary_id, c1 = column_1, c2 = column_2)
         cursor.execute(table)
         connection.commit()
         print("Table {table} Created".format(table = table_name))
@@ -39,37 +40,23 @@ def main():
         print("Table {} Deleted".format(name))
         
 
-
     def list_tables():
         cursor.execute('''SHOW TABLES''')
         total = cursor.fetchall()
         print(total)
-        #connection.commit()
-
-    #def list_columns(table):
-    #    cursor.execute('''SELECT * FROM {}'''.format(table))
-    #    columns = cursor.fetchall()
-    #    for records in columns:
-    #        print(records)
 
 
-    def list_columns():
-        cursor.execute('''SELECT * FROM people''')
+    def list_columns(table):
+        cursor.execute('''SELECT * FROM {}'''.format(table))
         columns = cursor.fetchall()
         for records in columns:
             print(records)
-
-    
-    #def insert_into_table(table_name, email, password):
-    #    action = '''INSERT INTO {table}(email, password) VALUES ({e}, {p})'''.format(table = table_name, e = email, p = password)
-    #    cursor.execute(action)
-    #    connection.commit()
-    #    print("Data inserted successfully: {e} / {p}".format(e = email, p = password))
     
 
     def insert_into_table(table_name, primary_id, column_1, column_2):
-        action = '''INSERT INTO {table}(id, email, password) VALUES ({p}, {c1}, {c2})'''.format(table = table_name, p = primary_id, c1 = column_1, c2 = column_2)
-        cursor.execute(action)
+        insert_script = '''INSERT INTO {table} (id, email, password) VALUES (%s, %s, %s)'''.format(table=table_name)
+        insert_value = (primary_id, column_1, column_2)
+        cursor.execute(insert_script, insert_value)
         connection.commit()
         print("Data inserted successfully: {p}, {c1}, {c2}".format(p = primary_id, c1 = column_1, c2 = column_2))
 
@@ -103,11 +90,11 @@ def main():
 
     #list_tables()
 
-    #insert_into_table("people", 1, "aaron", "aligator")
+    insert_into_table("people", 2, "ness@gmail.com", "earthbound")
 
     #create_table("people", "id", "email", "password" )
 
-    list_columns()
+    list_columns("people")
 
     #delete_table("people")
 
