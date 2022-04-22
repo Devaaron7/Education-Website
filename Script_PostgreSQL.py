@@ -26,8 +26,8 @@ def main():
 
     cursor = connection.cursor()
 
-    def create_table(table_name, column_1, column_2):
-        table = '''CREATE TABLE {table}({c1} varchar(255) NOT NULL,{c2} varchar(255) NOT NULL)'''.format(table = table_name, c1 = column_1, c2 = column_2)
+    def create_table(table_name, primary_id, column_1, column_2):
+        table = '''CREATE TABLE {table}({p} int PRIMARY KEY, {c1} varchar(255) NOT NULL,{c2} varchar(255) NOT NULL)'''.format(table = table_name, p = primary_id, c1 = column_1, c2 = column_2)
         cursor.execute(table)
         connection.commit()
         print("Table {table} Created".format(table = table_name))
@@ -46,10 +46,18 @@ def main():
         print(total)
         #connection.commit()
 
-    def list_columns(table):
-        cursor.execute('''SELECT NAME FROM {}'''.format(table))
+    #def list_columns(table):
+    #    cursor.execute('''SELECT * FROM {}'''.format(table))
+    #    columns = cursor.fetchall()
+    #    for records in columns:
+    #        print(records)
+
+
+    def list_columns():
+        cursor.execute('''SELECT * FROM people''')
         columns = cursor.fetchall()
-        print(columns)
+        for records in columns:
+            print(records)
 
     
     #def insert_into_table(table_name, email, password):
@@ -59,23 +67,49 @@ def main():
     #    print("Data inserted successfully: {e} / {p}".format(e = email, p = password))
     
 
-    def insert_into_table(table_name, value):
-        action = '''INSERT INTO {table}(NAME) VALUES ({v})'''.format(table = table_name, v = value)
+    def insert_into_table(table_name, primary_id, column_1, column_2):
+        action = '''INSERT INTO {table}(id, email, password) VALUES ({p}, {c1}, {c2})'''.format(table = table_name, p = primary_id, c1 = column_1, c2 = column_2)
         cursor.execute(action)
         connection.commit()
-        print("Data inserted successfully: {v}".format(v = value))
+        print("Data inserted successfully: {p}, {c1}, {c2}".format(p = primary_id, c1 = column_1, c2 = column_2))
 
 
 
-    list_tables()
 
-    insert_into_table("company", "Aaron")
 
-    #create_table("users", "email", "password" )
+    #table = '''CREATE TABLE IF NOT EXISTS PEOPLE(
+    #ID int PRIMARY KEY, 
+    #NAME varchar(255) NOT NULL,
+    #PASSWORD varchar(255))'''
+    
+    
+    #cursor.execute(table)
 
-    list_columns("company")
+    ## These commands work!!
 
-    #delete_table("users")
+    #insert_script = '''INSERT INTO PEOPLE (ID, NAME, PASSWORD) VALUES (%s, %s, %s)'''
+
+    #insert_value = (3, "lucas@gmail.com", "turbo")
+
+    #cursor.execute(insert_script, insert_value)
+
+
+
+
+
+
+
+
+
+    #list_tables()
+
+    #insert_into_table("people", 1, "aaron", "aligator")
+
+    #create_table("people", "id", "email", "password" )
+
+    list_columns()
+
+    #delete_table("people")
 
     #list_tables()
 
@@ -83,7 +117,7 @@ def main():
 
     
 
-    #connection.commit()
+    connection.commit()
 
 
 
