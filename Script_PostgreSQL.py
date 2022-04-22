@@ -61,78 +61,45 @@ def main():
         print("Data inserted successfully: {p}, {c1}, {c2}".format(p = primary_id, c1 = column_1, c2 = column_2))
 
 
-
-
-
-    #table = '''CREATE TABLE IF NOT EXISTS PEOPLE(
-    #ID int PRIMARY KEY, 
-    #NAME varchar(255) NOT NULL,
-    #PASSWORD varchar(255))'''
-    
-    
-    #cursor.execute(table)
-
-    ## These commands work!!
-
-    #insert_script = '''INSERT INTO PEOPLE (ID, NAME, PASSWORD) VALUES (%s, %s, %s)'''
-
-    #insert_value = (3, "lucas@gmail.com", "turbo")
-
-    #cursor.execute(insert_script, insert_value)
+    def delete_data(table_name, column, item):
+        delete_script = "DELETE FROM {table} WHERE {c} = %s".format(table=table_name, c=column)
+        delete_value = (item,)
+        cursor.execute(delete_script, delete_value)
+        connection.commit()
+        print("Data deleted from {table}".format(table=table_name))
 
 
 
 
-
-
-
-
+    ## Current Management Functions ##
 
     #list_tables()
 
-    insert_into_table("people", 2, "ness@gmail.com", "earthbound")
+    #insert_into_table("people", 1, "kyle@gmail.com", "Apex4lyfe")
 
     #create_table("people", "id", "email", "password" )
 
-    list_columns("people")
+    #list_columns("people")
 
     #delete_table("people")
 
-    #list_tables()
+    #delete_data("people", "id", 1)
+
 
     
 
     
 
-    connection.commit()
-
-
-
-
-
-
-
-
-
-
-    #cursor.execute('''INSERT INTO USERS("john@gmail.com", "button")''')
-
-    #cursor.execute('''INSERT INTO USERS(EMAIL, PASSWORD) VALUES ("john@gmail.com", "button")''')
     
-    #cursor.execute('''SELECT * from USERS''')
 
-    #result = cursor.fetchall()
 
-    #for data in result:
-    #    print(data)
 
-    #Commit your changes in the database
-    #connection.commit()
+    
     
     #Closing the connection
     connection.close()
 
-    #print("Action Complete")
+   
 
 
 if __name__ == "__main__":
