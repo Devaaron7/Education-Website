@@ -26,7 +26,7 @@
     
     <input type="password" id="password_check" oninput="checkifpasssame()"/> <br/> <br/>
 
-    <input type="button" id = "save" value="save" onclick="send_data()">
+    <input type="button" id = "save" value="save" onclick="send_json()">
 
   </center>
 
@@ -35,7 +35,11 @@
   
 </body>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 <script>
+
+
 
 
   function saveStaticDataToFile() {
@@ -90,6 +94,28 @@
     .then(results => results.json())
     .then(console.log);
   }
+
+
+
+  function send_json() {
+    var URL = "http://127.0.0.1:5000/"
+    var username = document.getElementById("user").value;
+    var password = document.getElementById("password").value;
+
+    $.ajax({
+      type: "POST",
+      url: URL,
+      data: JSON.stringify({ "userName": username, "password" : password }),
+      //data: JSON.stringify({ "userName": "Jhonny", "password" : "Bravo" }),
+      contentType: "application/json",
+      success: function (result) {
+        console.log(result);
+      },
+      error: function (result, status) {
+        console.log(result);
+      }
+    });
+      }
 
 
   </script> 
