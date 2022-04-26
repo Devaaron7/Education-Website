@@ -16,7 +16,7 @@
 
     <h1>Register</h1>
 
-    <p>Create User Name</p>
+    <p>Enter Email</p>
     <input type="text" id="user"/>
 
     <p>Create Password</p>
@@ -26,7 +26,7 @@
     
     <input type="password" id="password_check" oninput="checkifpasssame()"/> <br/> <br/>
 
-    <input type="button" id = "save" value="save" onclick="fetch_data()">
+    <input type="button" id = "save" value="save" onclick="send_data()">
 
   </center>
 
@@ -82,9 +82,11 @@
 
   
   function send_data() {
-    var URL = "https://api.github.com/users/Devaaron7"
+    var URL = "http://127.0.0.1:5000/"
+    var username = document.getElementById("user").value;
+    var password = document.getElementById("password").value;
 
-    fetch(URL, { method: "POST", body: "Hello World"})
+    fetch(URL, { method: "POST", body: username + ":" + password})
     .then(results => results.json())
     .then(console.log);
   }
