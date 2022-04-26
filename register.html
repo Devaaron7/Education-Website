@@ -26,7 +26,7 @@
     
     <input type="password" id="password_check" oninput="checkifpasssame()"/> <br/> <br/>
 
-    <input type="button" id = "save" value="save" onclick="saveStaticDataToFile()">
+    <input type="button" id = "save" value="save" onclick="fetch_data()">
 
   </center>
 
@@ -72,6 +72,13 @@
   }
 
 
+  function fetch_data() {
+    var URL = "https://api.github.com/users/Devaaron7"
+
+    fetch(URL)
+    .then(results => results.json())
+    .then(console.log);
+  }
 
 
   </script> 
