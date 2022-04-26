@@ -80,6 +80,15 @@
     .then(console.log);
   }
 
+  
+  function send_data() {
+    var URL = "https://api.github.com/users/Devaaron7"
+
+    fetch(URL, { method: "POST", body: "Hello World"})
+    .then(results => results.json())
+    .then(console.log);
+  }
+
 
   </script> 
 
