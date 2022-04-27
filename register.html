@@ -9,12 +9,12 @@
 
   <p></p>
 
-  <center>
+
 
     
   <div class="center">
 
-    <h1>Register</h1>
+    <h1>Register A New Account</h1>
 
     <p>Enter Email</p>
     <input type="text" id="user"/>
@@ -26,9 +26,9 @@
     
     <input type="password" id="password_check" oninput="checkifpasssame()"/> <br/> <br/>
 
-    <input type="button" id = "save" value="save" onclick="send_json()">
+    <input type="button" id = "save" value="Create Account" onclick="send_json()">
 
-  </center>
+  
 
   </div>
   
@@ -69,9 +69,11 @@
     if (current == password){
       document.getElementById("confirm_text").innerHTML = "Ok!";
       document.getElementById("confirm_text").style.color = 'green';
+      document.getElementById("save").disabled = false;
     }else{
       document.getElementById("confirm_text").innerHTML = "Password doesn't match";
       document.getElementById("confirm_text").style.color = 'red';
+      document.getElementById("save").disabled = true;
     }
   }
 
