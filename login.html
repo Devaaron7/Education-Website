@@ -19,7 +19,7 @@
     <p>Enter Email</p>
     <input type="text" id="user"/>
 
-    <p>Create Password</p>
+    <p>Enter Password</p>
     <input type="password" id="password"/>
     <br>
 
@@ -97,25 +97,37 @@
 
 
   function send_json() {
-    var URL = "http://127.0.0.1:5000/"
+    var URL = "http://127.0.0.1:5000/check"
     var username = document.getElementById("user").value;
     var password = document.getElementById("password").value;
+    var answer;
 
     $.ajax({
       type: "POST",
       url: URL,
       data: JSON.stringify({ "userName": username, "password" : password }),
-      //data: JSON.stringify({ "userName": "Jhonny", "password" : "Bravo" }),
       contentType: "application/json",
       success: function (result) {
-        console.log(result);
+        answer = Object.key(result)
+        //console.log(result.input_data);
+        //console.log(answer.Member);
+        
+        //document.location.href="login_success.html";
       },
       error: function (result, status) {
         console.log(result);
+        //document.location.href="login_fail.html";
       }
     });
+
+      console.log(answer)
+      //console.log(answer.includes("member"))
+
       }
 
+
+     
+</script>
 
   </script> 
 
