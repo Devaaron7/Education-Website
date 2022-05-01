@@ -15,6 +15,8 @@
   <div class="center">
 
     <h1>Account Successfully Created!</h1>
+    <p style="font-size:25px;">Web page redirects after 5 seconds.</p>
+    
 
     
 
@@ -27,7 +29,9 @@
 
 <script>
 
-
+  setTimeout(function(){
+    window.location.href = '/index.html';
+  }, 5000);
 
 
   function saveStaticDataToFile() {

@@ -400,9 +400,9 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 100vh;
-  background: url("../img/desk.jpg") top center;
-  background-size:cover
-  position: relative;
+  background: url("../img/classroom_edit.jpg") top center;
+  background-size:cover;
+  position:relative;
 }
 #hero:before {
   content: "";
@@ -414,7 +414,7 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
 }
 #hero .container {
-  padding-top: 72px;
+  padding-top: 22px;
 }
 @media (max-width: 992px) {
   #hero .container {
@@ -428,6 +428,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 56px;
   color: #fff;
   font-family: "Poppins", sans-serif;
+  text-shadow: 2px 2px rgb(0, 0, 0);
 }
 #hero h2 {
   color: #eee;
@@ -439,6 +440,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
   font-size: 15px;
   letter-spacing: 1px;
+  text-shadow: 2px 2px rgb(0, 0, 0);
   display: inline-block;
   padding: 10px 35px;
   border-radius: 50px;
@@ -446,7 +448,20 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 30px;
   border: 2px solid #fff;
   color: #fff;
+  
 }
+
+.float-container_h {
+  border: 5px solid #fff;
+  padding: 5px;
+}
+
+.float-child_h {
+    width: 50%;
+    float: left;
+    padding: 40px;
+    
+}  
 #hero .btn-get-started:hover {
   background: #5fcf80;
   border: 2px solid #5fcf80;
@@ -468,6 +483,8 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 18px;
     line-height: 24px;
   }
+
+  
 }
 
 /*--------------------------------------------------------------
