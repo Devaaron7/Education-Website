@@ -428,7 +428,7 @@ h1, h2, h3, h4, h5, h6 {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 60px 0;
+  padding: 20px 0;
   overflow: hidden;
 }
 
@@ -481,11 +481,11 @@ section {
   }
 }
 .breadcrumbs h2 {
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 500;
 }
 .breadcrumbs p {
-  font-size: 14px;
+  font-size: 20px;
   margin-bottom: 0;
 }
 
@@ -528,6 +528,52 @@ section {
     padding: 6px 18px;
   }
 }
+.dev_text{
+  font-size: 50px;
+  text-align: center;
+  line-height: 35px;
+}
+
+.round-image_a {
+  width: 200px;
+  height: 200px;
+  background-image: url('https://media-exp1.licdn.com/dms/image/C5603AQGruveOT0GvQw/profile-displayphoto-shrink_800_800/0/1639311763550?e=1657152000&v=beta&t=EVOG7I283fmZUd5YjBoczLzDAjKIRrvfESgV36n2K1I');
+  background-size: cover;
+  display: block;
+  border-radius: 125px;
+ -webkit-border-radius: 125px;
+ -moz-border-radius: 125px;
+  margin-left: auto;
+  margin-right: auto;
+ }
+
+ .round-image_k {
+  width: 200px;
+  height: 200px;
+  background-image: url('https://media-exp1.licdn.com/dms/image/C4D03AQGMb6JL0uE92A/profile-displayphoto-shrink_800_800/0/1623955221207?e=1657152000&v=beta&t=bdrCuLDvxiRQMnbSi7AjyzDdXoZO_kfp4VXK2WdFk8k');
+  background-size: cover;
+  display: block;
+  border-radius: 125px;
+ -webkit-border-radius: 125px;
+ -moz-border-radius: 125px;
+  margin-left: auto;
+  margin-right: auto;
+ }
+.float-container {
+    border: 5px solid #fff;
+    padding: 5px;
+}
+
+.float-container h3 {
+  text-align: center;
+}
+
+.float-child {
+    width: 50%;
+    float: left;
+    padding: 40px;
+    
+}  
 
 /*--------------------------------------------------------------
 # Counts
