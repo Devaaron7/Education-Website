@@ -14,21 +14,9 @@
     
   <div class="center">
 
-    <h1>Register A New Account</h1>
+    <h1>There was an error creating this account!</h1>
 
-    <p>Enter Email</p>
-    <input type="text" id="user"/>
-
-    <p>Create Password</p>
-    <input type="password" id="password"/>
-
-    <p style="color: black;" id="confirm_text">Confirm Password</p>
     
-    <input type="password" id="password_check" oninput="checkifpasssame()"/> <br/> <br/>
-
-    <input type="button" id = "save" value="Create Account" onclick="send_json()">
-
-  
 
   </div>
   
@@ -100,7 +88,7 @@
 
 
   function send_json() {
-    var URL = "http://127.0.0.1:5000/create"
+    var URL = "http://127.0.0.1:5000/"
     var username = document.getElementById("user").value;
     var password = document.getElementById("password").value;
 
@@ -108,14 +96,10 @@
       type: "POST",
       url: URL,
       data: JSON.stringify({ "userName": username, "password" : password }),
+      //data: JSON.stringify({ "userName": "Jhonny", "password" : "Bravo" }),
       contentType: "application/json",
       success: function (result) {
         console.log(result);
-        if(result == "Account Successfully Created!"){
-          document.location.href="register_success.html";
-        }else{
-          document.location.href="register_fail.html";
-        }
       },
       error: function (result, status) {
         console.log(result);
