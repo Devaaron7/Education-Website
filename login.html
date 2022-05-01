@@ -9,24 +9,20 @@
 
   <p></p>
 
-
-
-    
   <div class="center">
 
     <h1>Login</h1>
 
     <p>Enter Email</p>
-    <input type="text" id="user"/>
+    <input type="text" id="user" value="dan@msn.com"/>
 
     <p>Enter Password</p>
-    <input type="password" id="password"/>
+    <input type="password" id="password" value="123"/>
     <br>
 
     <input type="button" id = "save" value="Login" onclick="send_json()">
 
   
-
   </div>
   
   
@@ -35,27 +31,6 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <script>
-
-
-
-
-  function saveStaticDataToFile() {
-
-    if (document.getElementById("confirm_text").value == "Ok!"){
-
-      var username = document.getElementById("user").value;
-      var password = document.getElementById("password").value;
-      var stdin = username + "\n" + password;
-      var text_file = new Blob([stdin], {type:"txt"});
-      var anchor = document.createElement("a");
-      anchor.href = URL.createObjectURL(text_file);
-      anchor.download = "info.txt";
-      anchor.click();
-    }else{
-      document.getElementById("save").innerHTML = "Check Password Match"
-    }
-
-    }
 
 
   function checkifpasssame() {
@@ -108,20 +83,21 @@
       data: JSON.stringify({ "userName": username, "password" : password }),
       contentType: "application/json",
       success: function (result) {
-        answer = Object.key(result)
-        //console.log(result.input_data);
-        //console.log(answer.Member);
+
+        if (result == "Member"){
+          document.location.href="login_success.html";
+        }else{
+          document.location.href="login_fail.html";
+        }
         
-        //document.location.href="login_success.html";
       },
       error: function (result, status) {
         console.log(result);
-        //document.location.href="login_fail.html";
+        
       }
     });
 
-      console.log(answer)
-      //console.log(answer.includes("member"))
+
 
       }
 
