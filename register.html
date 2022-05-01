@@ -28,7 +28,7 @@
 
     <input type="button" id = "save" value="Create Account" onclick="send_json()">
 
-  
+    <p id="error"></p>
 
   </div>
   
@@ -119,6 +119,8 @@
       },
       error: function (result, status) {
         console.log(result);
+        document.getElementById("error").innerText = 'Error trying to connect';
+        document.getElementById("error").style.color = 'red';
       }
     });
       }
