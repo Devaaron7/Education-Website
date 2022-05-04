@@ -14,12 +14,12 @@
     
   <div class="center">
 
-    <h1>Register A New Account</h1>
+    <h1 id="title">Register A New Account</h1>
 
-    <p>Enter Email</p>
+    <p id="email">Enter Email</p>
     <input type="text" id="user"/>
 
-    <p>Create Password</p>
+    <p id="password_name">Enter Password</p>
     <input type="password" id="password"/>
 
     <p style="color: black;" id="confirm_text">Confirm Password</p>
@@ -28,6 +28,8 @@
 
     <input type="button" id = "save" value="Create Account" onclick="send_json()"> <br>
 
+    <a id="try_again" href="register.html"></a>
+    <br>
     <a href="index.html">Back To Homepage</a>
 
     <p id="error"></p>
@@ -80,6 +82,41 @@
   }
 
 
+  function register_error() {
+    document.getElementById("email").innerHTML = "";
+    var user = document.querySelector('#user');
+    user.style.display = "none";
+    document.getElementById("password_name").innerHTML = "";
+    var pass = document.querySelector("#password");
+    pass.style.display = "none";
+    var pass = document.querySelector("#save");
+    pass.style.display = "none";
+    var text = document.querySelector("#confirm_text");
+    text.style.display = "none";
+    var pc = document.querySelector("#password_check");
+    pc.style.display = "none";
+    document.getElementById("title").innerHTML = "Register Fail";
+    document.getElementById("try_again").innerHTML = "Retry Register";
+  }
+
+
+  function register_success() {
+    document.getElementById("email").innerHTML = "";
+    var user = document.querySelector('#user');
+    user.style.display = "none";
+    document.getElementById("password_name").innerHTML = "";
+    var pass = document.querySelector("#password");
+    pass.style.display = "none";
+    var pass = document.querySelector("#save");
+    pass.style.display = "none";
+    var text = document.querySelector("#confirm_text");
+    text.style.display = "none";
+    var pc = document.querySelector("#password_check");
+    pc.style.display = "none";
+    document.getElementById("title").innerHTML = "Account Created!";
+    //document.getElementById("try_again").innerHTML = "Retry Register";
+  }
+
   function fetch_data() {
     var URL = "https://api.github.com/users/Devaaron7"
 
@@ -114,9 +151,9 @@
       success: function (result) {
         console.log(result);
         if(result == "Account Successfully Created!"){
-          document.location.href="register_success.html";
+          register_success();
         }else{
-          document.location.href="register_fail.html";
+          register_error();
         }
       },
       error: function (result, status) {

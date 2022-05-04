@@ -11,19 +11,24 @@
 
   <div class="center">
 
-    <h1>Login</h1>
+    
+    <h1 id="login">Login</h1>
 
-    <p>Enter Email</p>
+    <p id="email">Enter Email</p>
     <input type="text" id="user"/>
 
-    <p>Enter Password</p>
+    <p id="password_name">Enter Password</p>
     <input type="password" id="password"/>
     <br>
 
+    <!--<input type="button" id = "save" value="Login" onclick="send_json()"> <br>-->
+
     <input type="button" id = "save" value="Login" onclick="send_json()"> <br>
 
+    
+    <a id="try_again" href="login.html"></a>
+    <br>
     <a href="index.html">Back To Homepage</a>
-
     <p id="error"></p>
 
   </div>
@@ -61,6 +66,20 @@
     .then(console.log);
   }
 
+  function login_error() {
+    document.getElementById("email").innerHTML = "";
+    var user = document.querySelector('#user');
+    user.style.display = "none";
+    document.getElementById("password_name").innerHTML = "";
+    var pass = document.querySelector("#password");
+    pass.style.display = "none";
+    var pass = document.querySelector("#save");
+    pass.style.display = "none";
+    document.getElementById("login").innerHTML = "Login Fail";
+    document.getElementById("try_again").innerHTML = "Retry Login";
+  }
+
+
   
   function send_data() {
     var URL = "http://127.0.0.1:5000/"
@@ -90,7 +109,7 @@
         if (result == "Member"){
           document.location.href="user_homepage.html";
         }else{
-          document.location.href="login_fail.html";
+          login_error();
         }
         
       },
