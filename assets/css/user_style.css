@@ -452,7 +452,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .float-container_h {
-  border: 5px solid #fff;
+  border: 5px solid rgb(255, 255, 255);
   padding: 5px;
 }
 
