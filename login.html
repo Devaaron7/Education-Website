@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="assets/css/register_style.css">
   
   
+  
 </head>
 <body>
 
@@ -22,6 +23,8 @@
     <br>
 
     <!--<input type="button" id = "save" value="Login" onclick="send_json()"> <br>-->
+    <div class="loader"></div>
+
 
     <input type="button" id = "save" value="Login" onclick="send_json()"> <br>
 
@@ -91,13 +94,19 @@
     .then(console.log);
   }
 
+  document.getElementById("loader").addEventListener("load", hide_loader);
 
+  function hide_loader() {
+    var spin = document.querySelector("#loader");
+    spin.style.display = "none";
+  }
 
   function send_json() {
     var URL = "https://universalclassroom.herokuapp.com/check"
     var username = document.getElementById("user").value;
     var password = document.getElementById("password").value;
-    var answer;
+    var pass = document.querySelector("#save");
+    pass.style.display = "none";
 
     $.ajax({
       type: "POST",
