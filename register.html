@@ -12,7 +12,7 @@
 
 
     
-  <div class="center">
+  <div id="input_form" class="center">
 
     <h1 id="title">Register A New Account</h1>
 
@@ -27,6 +27,10 @@
     <input type="password" id="password_check" oninput="checkifpasssame()"/> <br>
 
     <input type="button" id = "save" value="Create Account" onclick="send_json()"> <br>
+
+    <div id="insert" class="space">
+      <!--<div class="loader"></div>-->
+    </div>
 
     <a id="try_again" href="register.html"></a>
     <br>
@@ -83,6 +87,8 @@
 
 
   function register_error() {
+    document.getElementById("title").innerHTML = "Registration Fail";
+    document.getElementById("try_again").innerHTML = "Retry Registration";
     document.getElementById("email").innerHTML = "";
     var user = document.querySelector('#user');
     user.style.display = "none";
@@ -95,8 +101,9 @@
     text.style.display = "none";
     var pc = document.querySelector("#password_check");
     pc.style.display = "none";
-    document.getElementById("title").innerHTML = "Register Fail";
-    document.getElementById("try_again").innerHTML = "Retry Register";
+    var spin = document.querySelector("#get_loader");
+    spin.style.display = "none";
+    
   }
 
 
@@ -113,6 +120,8 @@
     text.style.display = "none";
     var pc = document.querySelector("#password_check");
     pc.style.display = "none";
+    var spin = document.querySelector("#get_loader");
+    spin.style.display = "none";
     document.getElementById("title").innerHTML = "Account Created!";
     //document.getElementById("try_again").innerHTML = "Retry Register";
   }
@@ -125,6 +134,13 @@
     .then(console.log);
   }
 
+
+  function add_loader() {
+    var new_div = document.createElement('div');
+    new_div.id = 'get_loader';
+    new_div.className = 'loader';
+    document.getElementById('insert').appendChild(new_div);
+  }
   
   function send_data() {
     var URL = "https://universalclassroom.herokuapp.com/"
@@ -139,6 +155,19 @@
 
 
   function send_json() {
+    add_loader();
+    document.getElementById("email").innerHTML = "";
+    var user = document.querySelector('#user');
+    user.style.display = "none";
+    document.getElementById("password_name").innerHTML = "";
+    var pass = document.querySelector("#password");
+    pass.style.display = "none";
+    var pass = document.querySelector("#save");
+    pass.style.display = "none";
+    var text = document.querySelector("#confirm_text");
+    text.style.display = "none";
+    var pc = document.querySelector("#password_check");
+    pc.style.display = "none";
     var URL = "https://universalclassroom.herokuapp.com/create"
     var username = document.getElementById("user").value;
     var password = document.getElementById("password").value;

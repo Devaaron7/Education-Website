@@ -10,7 +10,7 @@
 
   <p></p>
 
-  <div class="center">
+  <div id="input_form" class="center">
 
     
     <h1 id="login">Login</h1>
@@ -23,8 +23,9 @@
     <br>
 
     <!--<input type="button" id = "save" value="Login" onclick="send_json()"> <br>-->
-    <div class="loader"></div>
-
+    <div id="insert" class="space">
+    <!--<div class="loader"></div>-->
+    </div>
 
     <input type="button" id = "save" value="Login" onclick="send_json()"> <br>
 
@@ -78,6 +79,8 @@
     pass.style.display = "none";
     var pass = document.querySelector("#save");
     pass.style.display = "none";
+    var spin = document.querySelector("#get_loader");
+    spin.style.display = "none";
     document.getElementById("login").innerHTML = "Login Fail";
     document.getElementById("try_again").innerHTML = "Retry Login";
   }
@@ -101,12 +104,22 @@
     spin.style.display = "none";
   }
 
+  function add_loader() {
+    var new_div = document.createElement('div');
+    new_div.id = 'get_loader';
+    new_div.className = 'loader';
+    document.getElementById('insert').appendChild(new_div);
+  }
+  
+
   function send_json() {
+    add_loader()
     var URL = "https://universalclassroom.herokuapp.com/check"
     var username = document.getElementById("user").value;
     var password = document.getElementById("password").value;
     var pass = document.querySelector("#save");
     pass.style.display = "none";
+    
 
     $.ajax({
       type: "POST",
