@@ -12,7 +12,7 @@ body{
     flex-direction: column;
     position: absolute;
     align-items:center;
-    top: 40%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, 0);
     width: 500px;

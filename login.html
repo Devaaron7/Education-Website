@@ -114,6 +114,14 @@
 
   function send_json() {
     add_loader()
+    document.getElementById("email").innerHTML = "";
+    var user = document.querySelector('#user');
+    user.style.display = "none";
+    document.getElementById("password_name").innerHTML = "";
+    var pass = document.querySelector("#password");
+    pass.style.display = "none";
+    var pass = document.querySelector("#save");
+    pass.style.display = "none";
     var URL = "https://universalclassroom.herokuapp.com/check"
     var username = document.getElementById("user").value;
     var password = document.getElementById("password").value;
