@@ -86,8 +86,8 @@
   }
 
 
-  function register_error() {
-    document.getElementById("title").innerHTML = "Registration Fail";
+  function register_error(console_status) {
+    document.getElementById("title").innerHTML = console_status;
     document.getElementById("try_again").innerHTML = "Retry Registration";
     document.getElementById("email").innerHTML = "";
     var user = document.querySelector('#user');
@@ -182,7 +182,7 @@
         if(result == "Account Successfully Created!"){
           register_success();
         }else{
-          register_error();
+          register_error(result);
         }
       },
       error: function (result, status) {
