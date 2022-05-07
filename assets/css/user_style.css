@@ -462,6 +462,33 @@ h1, h2, h3, h4, h5, h6 {
     padding: 40px;
     
 }  
+
+.float-child_a {
+  width: 50%;
+  float: left;
+  padding: 40px;
+  background: rgba(0,0,0,0.3);
+}  
+
+.float-child_a h2 {
+  text-align: left;
+}  
+
+.float-child_b {
+  width: 40%;
+  
+  float:right;
+  padding: 10px;
+  
+}
+
+.float-child_b h1, h2{
+  text-align: right;
+  font-size: small;
+  
+}
+
+
 #hero .btn-get-started:hover {
   background: #5fcf80;
   border: 2px solid #5fcf80;
