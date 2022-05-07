@@ -135,9 +135,12 @@
       data: JSON.stringify({ "userName": username, "password" : password }),
       contentType: "application/json",
       success: function (result) {
-
+        //console.log(result);
         if (result == "Member"){
           document.location.href="user_homepage.html";
+        }
+        if (result == "Teacher"){
+          document.location.href="teacher_homepage.html";
         }else{
           login_error();
         }
