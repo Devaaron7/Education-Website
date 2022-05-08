@@ -108,7 +108,7 @@
       <p id="password_name">Enter additional details for student (15 character limit)</p>
       <input type="text" id="model_hw_notes" maxlength="15"/>
       <br>
-      <button id="modal__submit_btn" onclick="download(text, name);">Assign Work</button>
+      <button id="modal__submit_btn" onclick="download();">Assign Work</button>
     </div>
 
   </div>
@@ -179,14 +179,20 @@
     }
 
 
-
-    function download(text) {
+    
+    function download() {
+      //console.log()
       var a = document.getElementById("modal_file");
+
+      //console.log(a.value)
       const link = document.createElement("a");
-      var file = new Blob([text], {type: application/pdf});
-      a.href = URL.createObjectURL(file);
-      a.download = "for_student.pdf";
+      var file = new Blob([a.value], {type:"application/pdf"});
+      link.href = URL.createObjectURL(file);
+      link.download = "/assignments/for_student.pdf";
     }
+    
+
+
 
 
 
