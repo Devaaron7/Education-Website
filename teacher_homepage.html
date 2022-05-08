@@ -100,8 +100,10 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <p>Attach pdf to be assigned to student</p>
+      <input id="fileupload" type="file" name="fileupload" />
       <!--<input id="modal_file" name="userfile" type="file" accept="application/pdf" />-->
-      <a href="https://dl.dropboxusercontent.com/s/deroi5nwm6u7gdf/advice.png" class="dropbox-saver"></a>
+      <!--<a href="/assignments/test.pdf" download="myFile.pdf">Click to download</a>-->
+      <!--<a href="https://dl.dropboxusercontent.com/s/deroi5nwm6u7gdf/advice.png" class="dropbox-saver"></a>-->
       <br>
       <p>Enter Assignment Name (15 character limit)</p>
       <input type="text" id="modal_hw_title" maxlength="15"/>
@@ -109,7 +111,7 @@
       <p id="password_name">Enter additional details for student (15 character limit)</p>
       <input type="text" id="model_hw_notes" maxlength="15"/>
       <br>
-      <button id="modal__submit_btn" onclick="download();">Assign Work</button>
+      <button id="modal__submit_btn" onclick="uploadFile();">Assign Work</button>
     </div>
 
   </div>
@@ -130,6 +132,9 @@
   <script src="assets/js/main.js"></script>
 
   <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="3ocpqk088amwwr9"></script>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
   <script>
         /* When the user clicks on the button,
@@ -192,11 +197,54 @@
       link.download = "/assignments/for_student.pdf";
     }
     
+    /*
+    function upload() {
+    var a = document.getElementById("modal_file");
+    
+    $.ajax({
+      
+      url: "/for_teacher/", 
+      type: "POST",
+      data: a.value,              
+      contentType: false,                  
+      processData:false,        
+      success: function(data)   
+      {
+          console.log(data)
+      }
+    })
+  }
+    
 
+    function upload() {
+      var fd = new FormData(),
+          myFile = document.getElementById("modal_file").files[0];
+    
+      fd.append( 'file',  myFile);
+    
+      $.ajax({
+        url: "/for_teacher/",
+        data: fd,
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        success: function(data){
+          console.log(data);
+        }
+      });
+    }
+    */
 
-
-
-
+    async function uploadFile() {
+      let formData = new FormData(); 
+      formData.append("file", fileupload.files[0]);
+      await fetch('/upload.php', {
+        method: "POST", 
+        body: formData
+      }); 
+      alert('The file has been uploaded successfully.');
+      }
+  
   </script>
 
 
