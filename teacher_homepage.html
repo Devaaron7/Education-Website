@@ -100,7 +100,11 @@
     <div class="modal-content">
       <span class="close">&times;</span>
       <p>Attach pdf to be assigned to student</p>
-      <input id="fileupload" type="file" name="fileupload" />
+      <form class="form" id="myForm">
+        <input id="pdf" type="file" name="fileupload" />
+        <button type="submit">Upload File</button>
+      </form>
+      
       <!--<input id="modal_file" name="userfile" type="file" accept="application/pdf" />-->
       <!--<a href="/assignments/test.pdf" download="myFile.pdf">Click to download</a>-->
       <!--<a href="https://dl.dropboxusercontent.com/s/deroi5nwm6u7gdf/advice.png" class="dropbox-saver"></a>-->
@@ -233,7 +237,7 @@
         }
       });
     }
-    */
+    
 
     async function uploadFile() {
       let formData = new FormData(); 
@@ -244,7 +248,27 @@
       }); 
       alert('The file has been uploaded successfully.');
       }
-  
+      */
+
+    const myForm = document.getElementById("myForm");
+    const pdfFile = document.getElementById("inpFile");
+
+    myForm.addEventListener("submit", e => {
+      e.preventDefault();
+
+      const endpoint = "upload.php";
+      const formData = new FormData();
+
+      //console.log(pdf.files)
+
+      formData.append("pdf", pdf.files[0]);
+
+      fetch(endpoint, {
+        method: "post",
+        body: formData
+      }).catch(console.error);
+    });
+
   </script>
 
 

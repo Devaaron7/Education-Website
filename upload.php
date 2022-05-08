@@ -1,16 +1,7 @@
 <?php
 
-/* Get the name of the uploaded file */
-$filename = $_FILES['file']['name'];
+$targetPath = "for_teacher/" . basename($_FILES["pdf"]["name"]);
+move_uploaded_file($_FILES["pdf"]["tmp_name"], $targetPath);
 
-/* Choose where to save the uploaded file */
-$location = "/for_student/".$filename;
-
-/* Save the uploaded file to the local filesystem */
-if ( move_uploaded_file($_FILES['file']['tmp_name'], $location) ) { 
-  echo 'Success'; 
-} else { 
-  echo 'Failure'; 
-}
 
 ?>
