@@ -36,7 +36,7 @@
   ======================================================== -->
 </head>
 
-<body>
+<body onload="load_notes()">
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
@@ -93,8 +93,8 @@
 
       <div class="float-child_a">
         <div class="container position-relative">
-          <h1>Current Assignment:<br>Essay on Social Media's effect on Modern Soceity.</h1>
-          <h2>Write a 300 word minumum essay on the modern<br>effects of social media. Use MLA formatting when<br> citing sources.</h2>
+          <h1>Current Assignment:<br></h1><h1 id="current_work"></h1>
+          <h2 id="current_desc"></h2>
           <a href="register.html" class="btn-get-started">Download Assignment</a>
           <a href="register.html" class="btn-get-started">Upload Assignment</a>
         </div>
@@ -129,6 +129,44 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+  <script>
+
+  
+    
+    function load_notes() {
+      var URL = "http://127.0.0.1:5000/notes"
+      $.ajax({
+        type: "GET",
+        url: URL,
+        dataType : "json",
+        success: function (result) {
+          //console.log(result.current_assign, result.current_notes);
+          document.getElementById("current_work").innerHTML = result.current_assign;
+          document.getElementById("current_desc").innerHTML = result.current_notes;
+          document.getElementById("pw").innerHTML = result.previous_assign;
+          document.getElementById("grade").innerHTML = result.grade;
+          document.getElementById("note").innerHTML = result.prev_note;
+        },
+        error: function (result, status) {
+          console.log(result);
+        }
+      });
+  
+  
+  
+        }
+      
+
+
+
+
+
+
+
+  </script>
 
 </body>
 
