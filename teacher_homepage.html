@@ -79,9 +79,9 @@
 
       <div class="float-child_b">
         <div class="container position-relative">
-          <h1>Previous Assignment:<br></h1><h1 id="pw"></h1>
+          <h1>Past Assignment:<br></h1><h1 id="pw"></h1>
           <h1>Final Grade: </h1><h1 id="grade"></h1>
-          <h2>Note From Teacher:<br></h2><h2 id="note"></h2>
+          <h2>Note To Student:<br></h2><h2 id="note"></h2>
         
         </div>
       </div>
@@ -147,30 +147,50 @@
   <script>
 
     
+    function uploadText(){
+
+      var hwTitle = document.getElementById("modal_hw_title").value;
+      var hwNote = document.getElementById("model_hw_notes").value;
+
+      $.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:5000/assign_text",
+        data: JSON.stringify({ "hw_title": hwTitle, "hw_note" : hwNote }),
+        contentType: "application/json",
+        success: function (result) {
+          console.log(result);
+        }
+      });
+
+
+
+
+    }
+
     function uploadFile() {
       var pdfFile = document.getElementById("pdf").files[0];
+      
       var formData = new FormData();
       formData.append("file", pdfFile);
       console.log(formData);
 
       $.ajax({
         type : 'POST',
-        url : "http://127.0.0.1:5000/assign",
+        url : "http://127.0.0.1:5000/assign_pdf",
         processData: false,
         contentType: false,
         data : formData,
         success: function (result) {
-          console.log(result)
+          uploadText();
         }
         
       });
 
-
-
     }
 
 
-
+    
+      
 
 
 
