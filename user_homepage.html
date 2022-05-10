@@ -95,8 +95,8 @@
         <div class="container position-relative">
           <h1>Current Assignment:<br></h1><h1 id="current_work"></h1>
           <h2 id="current_desc"></h2>
-          <a href="register.html" class="btn-get-started">Download Assignment</a>
-          <a href="register.html" class="btn-get-started">Upload Assignment</a>
+          <a href="https://app.box.com/index.php?rm=box_download_shared_file&shared_name=2keic3n6o6p5a79emszi8r78jxj4p1tt&file_id=f_955466932846" class="btn-get-started">Download Assignment</a>
+          <<a id="assign_btn_a" href="#" onclick=""; class="btn-get-started">Upload Assignment</a>
         </div>
       </div>
 
@@ -113,7 +113,26 @@
     </div>
   </section><!-- End Hero -->
   
+  <!-- The Modal -->
+  <div id="myModal_a" class="modal">
 
+    <!-- Modal content -->
+    <div class="modal-content">
+
+      <span class="close_a">&times;</span>
+
+      <p id="current_assignment"></p>
+      <br>
+
+      <p>Upload completed assignment in pdf format to teacher.</p>
+      <input id="pdf" type="file" name="fileupload" />
+      <br>
+
+      <button id="modal__submit_btn" onclick="uploadFile();">Send Assignment</button>
+
+    </div>
+
+  </div>
   
   
 
@@ -160,7 +179,76 @@
         }
       
 
+    // ----------------Modal Section
 
+        /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    // Close the dropdown menu if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.get-started-btn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+
+
+      // Get the modal
+    var modal_a = document.getElementById("myModal_a");
+
+    var modal_b = document.getElementById("myModal_b");
+
+    // Get the button that opens the modal
+    var btn_a = document.getElementById("assign_btn_a");
+
+    var btn_b = document.getElementById("assign_btn_b");
+
+    // Get the <span> element that closes the modal
+    var span_a = document.getElementsByClassName("close_a")[0];
+
+    var span_b = document.getElementsByClassName("close_b")[0];
+
+    // When the user clicks the button, open the modal 
+    btn_a.onclick = function() {
+      modal_a.style.display = "block";
+    }
+
+    btn_b.onclick = function() {
+      modal_b.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span_a.onclick = function() {
+      modal_a.style.display = "none";
+    }
+
+    span_b.onclick = function() {
+      modal_b.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal_a) {
+        modal_a.style.display = "none";
+      }
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal_b) {
+        modal_b.style.display = "none";
+      }
+    }
+
+    // ---------------- End Modal Section
 
 
 

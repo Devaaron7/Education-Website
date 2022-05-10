@@ -127,11 +127,11 @@
       <br>
 
       <p>Provide letter grade for student</p>
-      <input type="text" id="modal_hw_title" maxlength="30"/>
+      <input type="text" id="modal_hw_grade" maxlength="2"/>
       <br>
 
-      <p id="password_name">Enter additional details for student</p>
-      <input type="text" id="model_hw_notes" maxlength="30"/>
+      <p id="student_notes">Enter additional details for student</p>
+      <input type="text" id="model_hw_notes_student" maxlength="30"/>
       <br>
 
       <button id="modal__submit_btn" onclick="sendGrade();">Send Grade To Student</button>
@@ -160,6 +160,30 @@
         success: function (result) {
           alert(result)
           modal_a.style.display = "none";
+          load_notes()
+
+        }
+      });
+
+
+
+
+    }
+
+
+    function sendGrade(){
+
+      var hwGrade = document.getElementById("modal_hw_grade").value;
+      var hwNoteStudent = document.getElementById("model_hw_notes_student").value;
+
+      $.ajax({
+        type: "POST",
+        url: "http://127.0.0.1:5000/assign_grade",
+        data: JSON.stringify({ "modal_hw_grade": hwGrade, "model_hw_notes_student" : hwNoteStudent }),
+        contentType: "application/json",
+        success: function (result) {
+          alert(result)
+          modal_b.style.display = "none";
           load_notes()
 
         }
