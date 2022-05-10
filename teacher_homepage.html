@@ -36,7 +36,7 @@
   ======================================================== -->
 </head>
 
-<body>
+<body onload="load_notes();">
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
@@ -69,8 +69,8 @@
 
       <div class="float-child_a">
         <div class="container position-relative">
-          <h1>Current Assignment:<br>Essay on Social Media's effect on Modern Soceity.</h1>
-          <h2>Write a 300 word minumum essay on the modern<br>effects of social media. Use MLA formatting when<br> citing sources.</h2>
+          <h1>Current Assignment:<br></h1><h1 id="current_work"></h1>
+          <h2 id="current_desc"></h2>
           <a id="assign_btn_a" href="#" onclick=""; class="btn-get-started">Assign Work</a>
           <a id="assign_btn_b" href="#" onclick=""; class="btn-get-started">Review Turned In Work</a>
         </div>
@@ -101,12 +101,12 @@
       <input id="pdf" type="file" name="fileupload" />
       <br>
 
-      <p>Enter Assignment Name (15 character limit)</p>
-      <input type="text" id="modal_hw_title" maxlength="15"/>
+      <p>Enter Assignment Name (30 character limit)</p>
+      <input type="text" id="modal_hw_title" maxlength="30"/>
       <br>
 
-      <p id="password_name">Enter additional details for student (15 character limit)</p>
-      <input type="text" id="model_hw_notes" maxlength="15"/>
+      <p id="password_name">Enter additional details for student (30 character limit)</p>
+      <input type="text" id="model_hw_notes" maxlength="30"/>
       <br>
 
       <button id="modal__submit_btn" onclick="uploadFile();">Assign Work</button>
@@ -127,11 +127,11 @@
       <br>
 
       <p>Provide letter grade for student</p>
-      <input type="text" id="modal_hw_title" maxlength="15"/>
+      <input type="text" id="modal_hw_title" maxlength="30"/>
       <br>
 
       <p id="password_name">Enter additional details for student</p>
-      <input type="text" id="model_hw_notes" maxlength="15"/>
+      <input type="text" id="model_hw_notes" maxlength="30"/>
       <br>
 
       <button id="modal__submit_btn" onclick="sendGrade();">Send Grade To Student</button>
@@ -158,7 +158,10 @@
         data: JSON.stringify({ "hw_title": hwTitle, "hw_note" : hwNote }),
         contentType: "application/json",
         success: function (result) {
-          console.log(result);
+          alert(result)
+          modal_a.style.display = "none";
+          load_notes()
+
         }
       });
 
@@ -189,7 +192,28 @@
     }
 
 
-    
+    function load_notes() {
+      var URL = "http://127.0.0.1:5000/notes"
+      $.ajax({
+        type: "GET",
+        url: URL,
+        dataType : "json",
+        success: function (result) {
+          //console.log(result.current_assign, result.current_notes);
+          document.getElementById("current_work").innerHTML = result.current_assign;
+          document.getElementById("current_desc").innerHTML = result.current_notes;
+          document.getElementById("pw").innerHTML = result.previous_assign;
+          document.getElementById("grade").innerHTML = result.grade;
+          document.getElementById("note").innerHTML = result.prev_note;
+        },
+        error: function (result, status) {
+          console.log(result);
+        }
+      });
+  
+  
+  
+        }
       
 
 
