@@ -522,15 +522,31 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* The Close Button */
-.close {
+.close_a {
   color: #aaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close_a:hover,
+.close_a:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/* The Close Button */
+.close_b {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close_b:hover,
+.close_b:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
