@@ -123,7 +123,7 @@
       <span class="close_b">&times;</span>
 
       <p>Save Student Submission</p>
-      <a href="http://127.0.0.1:5000/download_student" download="Student_Submission">Download</a>
+      <a href="https://universalclassroom.herokuapp.com/download_student" download="Student_Submission">Download</a>
       <br>
 
       <p>Provide letter grade for student</p>
@@ -154,7 +154,7 @@
 
       $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:5000/assign_text",
+        url: "https://universalclassroom.herokuapp.com/assign_text",
         data: JSON.stringify({ "hw_title": hwTitle, "hw_note" : hwNote }),
         contentType: "application/json",
         success: function (result) {
@@ -178,7 +178,7 @@
 
       $.ajax({
         type: "POST",
-        url: "http://127.0.0.1:5000/assign_grade",
+        url: "https://universalclassroom.herokuapp.com/assign_grade",
         data: JSON.stringify({ "modal_hw_grade": hwGrade, "model_hw_notes_student" : hwNoteStudent }),
         contentType: "application/json",
         success: function (result) {
@@ -203,7 +203,7 @@
 
       $.ajax({
         type : 'POST',
-        url : "http://127.0.0.1:5000/assign_pdf",
+        url : "https://universalclassroom.herokuapp.com/assign_pdf",
         processData: false,
         contentType: false,
         data : formData,
@@ -217,7 +217,7 @@
 
 
     function load_notes() {
-      var URL = "http://127.0.0.1:5000/notes"
+      var URL = "https://universalclassroom.herokuapp.com/notes"
       $.ajax({
         type: "GET",
         url: URL,
