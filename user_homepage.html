@@ -36,7 +36,7 @@
   ======================================================== -->
 </head>
 
-<body onload="load_notes();">
+<body onload="userIsStudent();">
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
@@ -52,7 +52,7 @@
           <div class="dropdown">
             <button onclick="myFunction()" class="get-started-btn">Hello User</button>
             <div id="myDropdown" class="dropdown-content">
-              <a href="index.html">Logout</a>
+              <a href="#" onclick="logout();">Logout</a>
             </div>
           </div>
           
@@ -152,6 +152,22 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
   <script>
+
+
+    function userIsStudent() {
+
+      if (sessionStorage.getItem('AuthenticationState') === null) {
+        window.open("access_error.html", "_self");
+     }
+     else {
+      load_notes()
+     }
+
+    }
+
+
+
+
 
   
     
@@ -280,6 +296,10 @@
     // ---------------- End Modal Section
 
 
+    function logout() {
+      sessionStorage.removeItem("AuthenticationState");
+      window.open('index.html','_self');
+    }
 
 
 

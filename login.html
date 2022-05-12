@@ -110,6 +110,9 @@
     new_div.className = 'loader';
     document.getElementById('insert').appendChild(new_div);
   }
+
+
+  
   
 
   function send_json() {
@@ -122,11 +125,13 @@
     pass.style.display = "none";
     var pass = document.querySelector("#save");
     pass.style.display = "none";
-    var URL = "https://universalclassroom.herokuapp.com/check"
+    //var URL = "https://universalclassroom.herokuapp.com/check"
+    var URL = "http://127.0.0.1:5000/check"
     var username = document.getElementById("user").value;
     var password = document.getElementById("password").value;
     var pass = document.querySelector("#save");
     pass.style.display = "none";
+
     
 
     $.ajax({
@@ -137,7 +142,9 @@
       success: function (result) {
         //console.log(result);
         if (result == "Member"){
-          document.location.href="user_homepage.html";
+          sessionStorage.setItem("AuthenticationState", "Authenticated");
+          window.open('user_homepage.html','_self');
+          //document.location.href="user_homepage.html";
         }
         if (result == "Teacher"){
           document.location.href="teacher_homepage.html";
