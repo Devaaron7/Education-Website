@@ -36,7 +36,7 @@
   ======================================================== -->
 </head>
 
-<body onload="load_notes();">
+<body onload="refreshDatabase();">
 
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
@@ -166,8 +166,6 @@
       });
 
 
-
-
     }
 
 
@@ -216,6 +214,11 @@
     }
 
 
+    function refreshDatabase() {
+      setInterval(load_notes, 5000);
+    }
+
+
     function load_notes() {
       var URL = "https://universalclassroom.herokuapp.com/notes"
       $.ajax({
@@ -238,8 +241,9 @@
   
   
         }
-      
 
+
+      
 
 
 
