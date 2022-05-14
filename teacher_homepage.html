@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Mentor Bootstrap Template - Index</title>
+  <title>Teacher Profile</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -52,7 +52,7 @@
           <div class="dropdown">
             <button onclick="myFunction()" class="get-started-btn">Hello User</button>
             <div id="myDropdown" class="dropdown-content">
-              <a href="index.html">Logout</a>
+              <a href="#" onclick="logout();">Logout</a>
             </div>
           </div>
           
@@ -146,6 +146,28 @@
 
   <script>
 
+    function refreshDatabase() {
+      setInterval(userIsTeacher, 5000);
+    }
+
+
+    function userIsTeacher() {
+
+      if (sessionStorage.getItem('AuthenticationState') === null) {
+        window.open("access_error.html", "_self");
+     }
+     else {
+      load_notes()
+     }
+
+    }
+
+
+    function logout() {
+      sessionStorage.removeItem("AuthenticationState");
+      window.open('index.html','_self');
+    }
+
     
     function uploadText(){
 
@@ -214,9 +236,6 @@
     }
 
 
-    function refreshDatabase() {
-      setInterval(load_notes, 5000);
-    }
 
 
     function load_notes() {

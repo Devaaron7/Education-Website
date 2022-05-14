@@ -147,7 +147,8 @@
           //document.location.href="user_homepage.html";
         }
         if (result == "Teacher"){
-          document.location.href="teacher_homepage.html";
+          sessionStorage.setItem("AuthenticationState", "Authenticated");
+          window.open('teacher_homepage.html','_self');
         }else{
           login_error();
         }
@@ -162,7 +163,7 @@
 
 
 
-      }
+    }
 
 
      
