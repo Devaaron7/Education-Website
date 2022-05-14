@@ -21,7 +21,7 @@ Students:
 
 Please feel free to walk through the website and test the features out.
 
-
+https://devaaron7.github.io/Education-Website/
 
 Teacher login:
 email="teacher@<span>gmail.</span>com"
