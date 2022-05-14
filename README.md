@@ -13,7 +13,7 @@ Current Features:
 Teachers:
 - Assign work to students ( PDF file upload, title & description input fields)
 - Download completed work from Student user
-- Provide Grade & additional feedback that sent to the student's page.
+- Provide Grade & additional feedback thats sent to the student's page.
 
 Students:
 - Download work assigned by Teacher user
@@ -29,7 +29,7 @@ Student login:
 email="student@gmail.com"
 password="123"
 
-**AS THIS WAS CREATED AS A LEARNING EXERCISE, PLEASE DO DONT USE REAL EMAIL/PASSWORD CREDITALS IF CREATING YOUR OWN STUDENT ACCOUNT. THE WEBSITE'S SECURITY ISN'T SECURE)
+**AS THIS WAS CREATED AS A LEARNING EXERCISE, PLEASE DO DONT USE REAL EMAIL/PASSWORD CREDENTIALS IF CREATING YOUR OWN STUDENT ACCOUNT. THE WEBSITE'S ISN'T SECURE)
 
 Skills learned:
 - Javascript to collect HTML form information, use functions to load information from the backend into the webpage
@@ -39,6 +39,14 @@ Skills learned:
 - Python w/ Psycopg2 to create a basic CRUD application for updating the SQL database
 - Using free website hosting solutions like Github for the frontend & Heroku for the backend services
 - Implementing API services such as Dropbox to allow uploading & downloading features on the website
+
+Future Plans:
+- Add more user profile features (bio, photo, etc)
+- Ability to assign different work to different students
+- Chat window / messaging center
+- Ability to export out grades/ feedback into an excel file
+- Better security to match industry standards
+- Video components to enhance user experience. 
 
 Thank you for visiting my repository. Please feel free to reach out to me at aaron123t@gmail.com.
 
