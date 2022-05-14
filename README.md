@@ -2,6 +2,8 @@
 
 This is a project I created to teach me all the different types of services needed to create & launch a web application with features.
 
+I worked with a fellow programmer (Kyle) to build and deploy the website. You can find his Github here - https://github.com/kyle123c
+
 The app (located here - https://devaaron7.github.io/Education-Website/) allows for basic file sharing between two users ( Teacher & Student).
 
 Current Features:
@@ -35,3 +37,8 @@ Skills learned:
 - Python Flask for setting up API / web routes to handle the webpage requests
 - SQL to create tables that store the users data
 - Python w/ Psycopg2 to create a basic CRUD application for updating the SQL database
+- Using free website hosting solutions like Github for the frontend & Heroku for the backend services
+- Implementing API services such as Dropbox to allow uploading & downloading features on the website
+
+Thank you for visiting my repository. Please feel free to reach out to me at aaron123t@gmail.com.
+
