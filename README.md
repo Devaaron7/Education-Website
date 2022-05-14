@@ -43,6 +43,7 @@ Skills learned:
 - Implementing API services such as Dropbox to allow uploading & downloading features on the website
 
 Future Plans:
+- Make mobile friendly
 - Add more user profile features (bio, photo, etc)
 - Ability to assign different work to different students
 - Chat window / messaging center
