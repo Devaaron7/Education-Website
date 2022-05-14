@@ -21,12 +21,14 @@ Students:
 
 Please feel free to walk through the website and test the features out.
 
+
+
 Teacher login:
-email="teacher@gmail.com"
+email="teacher@<span>gmail.</span>com"
 password="123"
 
 Student login:
-email="student@gmail.com"
+email="student@<span>gmail.</span>com"
 password="123"
 
 **AS THIS WAS CREATED AS A LEARNING EXERCISE, PLEASE DO DONT USE REAL EMAIL/PASSWORD CREDENTIALS IF CREATING YOUR OWN STUDENT ACCOUNT. THE WEBSITE'S ISN'T SECURE)
