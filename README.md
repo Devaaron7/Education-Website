@@ -31,7 +31,7 @@ Student login:
 email="student@<span>gmail.</span>com"
 password="123"
 
-**AS THIS WAS CREATED AS A LEARNING EXERCISE, PLEASE DO DONT USE REAL EMAIL/PASSWORD CREDENTIALS IF CREATING YOUR OWN STUDENT ACCOUNT. THE WEBSITE'S ISN'T SECURE)
+**AS THIS WAS CREATED AS A LEARNING EXERCISE, PLEASE DO DONT USE REAL EMAIL/PASSWORD CREDENTIALS IF CREATING YOUR OWN STUDENT ACCOUNT. THE WEBSITE ISN'T SECURE)
 
 Skills learned:
 - Javascript to collect HTML form information, use functions to load information from the backend into the webpage
