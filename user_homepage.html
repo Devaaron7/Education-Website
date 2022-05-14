@@ -152,11 +152,11 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
   <script>
+
     
     function refreshDatabase() {
       setInterval(userIsStudent, 5000);
     }
-
 
     function userIsStudent() {
 
@@ -169,12 +169,6 @@
 
     }
 
-
-
-
-
-  
-    
     function load_notes() {
       
       var URL = "https://universalclassroom.herokuapp.com/notes"
@@ -183,22 +177,21 @@
         url: URL,
         dataType : "json",
         success: function (result) {
-          //console.log(result.current_assign, result.current_notes);
+          
           document.getElementById("current_assignment").innerHTML = result.current_assign;
           document.getElementById("current_work").innerHTML = result.current_assign;
           document.getElementById("current_desc").innerHTML = result.current_notes;
           document.getElementById("pw").innerHTML = result.previous_assign;
           document.getElementById("grade").innerHTML = result.grade;
           document.getElementById("note").innerHTML = result.prev_note;
+
         },
         error: function (result, status) {
           console.log(result);
         }
       });
-  
-  
-  
-        }
+
+      }
 
 
 
@@ -223,30 +216,9 @@
           
         });
   
-      }
-
-
-      /*
-      function setPrev(){
-
-        //var setPrevTitle = document.getElementById("pw").value;
-        //console.log(setPrevTitle);
+    }
       
-  
-        $.ajax({
-          type: "POST",
-          url: "https://universalclassroom.herokuapp.com/set_prev",
-          data: JSON.stringify({"current_work": setPrevTitle}),
-          contentType: "application/json",
-          success: function (result) {
-            alert(result)
-            modal_a.style.display = "none";
-            load_notes()
-  
-          }
-        });
-      }
-      */
+
     // ----------------Modal Section
 
         /* When the user clicks on the button,
@@ -295,8 +267,6 @@
         modal_a.style.display = "none";
       }
     }
-
-
     // ---------------- End Modal Section
 
 
