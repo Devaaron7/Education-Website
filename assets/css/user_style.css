@@ -687,7 +687,7 @@ section {
 .round-image_a {
   width: 200px;
   height: 200px;
-  background-image: url('https://media-exp1.licdn.com/dms/image/C5603AQGruveOT0GvQw/profile-displayphoto-shrink_800_800/0/1639311763550?e=1657152000&v=beta&t=EVOG7I283fmZUd5YjBoczLzDAjKIRrvfESgV36n2K1I');
+  background-image: url('/assets/img/aaron_profile.jpg');
   background-size: cover;
   display: block;
   border-radius: 125px;
@@ -700,7 +700,7 @@ section {
  .round-image_k {
   width: 200px;
   height: 200px;
-  background-image: url('https://media-exp1.licdn.com/dms/image/C4D03AQGMb6JL0uE92A/profile-displayphoto-shrink_800_800/0/1623955221207?e=1657152000&v=beta&t=bdrCuLDvxiRQMnbSi7AjyzDdXoZO_kfp4VXK2WdFk8k');
+  background-image: url('/assets/img/kyle_profile.jpg');
   background-size: cover;
   display: block;
   border-radius: 125px;
