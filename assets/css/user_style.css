@@ -687,7 +687,7 @@ section {
 .round-image_a {
   width: 200px;
   height: 200px;
-  background-image: url('/assets/img/aaron_profile.jpg');
+  background-image: url('https://raw.githubusercontent.com/Devaaron7/Education-Website/main/assets/img/aaron_profile.jpg');
   background-size: cover;
   display: block;
   border-radius: 125px;
@@ -700,7 +700,7 @@ section {
  .round-image_k {
   width: 200px;
   height: 200px;
-  background-image: url('/assets/img/kyle_profile.jpg');
+  background-image: url('https://raw.githubusercontent.com/Devaaron7/Education-Website/main/assets/img/kyle_profile.jpg');
   background-size: cover;
   display: block;
   border-radius: 125px;
